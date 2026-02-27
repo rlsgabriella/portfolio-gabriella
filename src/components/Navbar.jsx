@@ -54,7 +54,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`md:hidden absolute top-full left-0 w-full glass border-t border-white/5 overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-[400px] opacity-100 py-4' : 'max-h-0 opacity-0 py-0'}`}>
+            <div className={`md:hidden absolute top-full left-0 w-full glass border-t border-white/3 overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-[400px] opacity-100 py-4' : 'max-h-0 opacity-0 py-0'}`}>
                 <div className="flex flex-col px-6 gap-4">
                     {navLinks.map((link) => (
                         <a

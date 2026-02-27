@@ -5,8 +5,8 @@ const Hero = () => {
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
             {/* Background Decorators */}
-            <div className="absolute top-[20%] left-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-primary/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-accent/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+            <div className="absolute top-[20%] left-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-10 grid md:grid-cols-2 gap-12 items-center">
 
@@ -20,7 +20,7 @@ const Hero = () => {
                     <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]">
                         Transformando <br />
                         Ideias em <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Realidade</span> Digital.
+                        <span className="text-primary">Realidade</span> Digital.
                     </h1>
 
                     <p className="text-lg text-textMuted max-w-lg leading-relaxed">

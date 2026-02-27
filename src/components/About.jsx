@@ -26,7 +26,7 @@ const skills = [
 
 const About = () => {
     return (
-        <section id="about" className="py-24 relative overflow-hidden bg-surface/30 border-t border-white/5">
+        <section id="about" className="py-24 relative overflow-hidden bg-surface/20 border-t border-white/3">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <div className="flex flex-col md:flex-row gap-16 items-start">
 
@@ -34,7 +34,7 @@ const About = () => {
                     <div className="md:w-1/2 flex flex-col gap-6">
                         <h2 className="text-sm font-semibold text-primary uppercase tracking-widest">Sobre Mim</h2>
                         <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                            Construindo produtos digitais com <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">propósito</span>.
+                            Construindo produtos digitais com <span className="text-primary">propósito</span>.
                         </h3>
 
                         <p className="text-textMuted text-lg leading-relaxed">
@@ -62,7 +62,7 @@ const About = () => {
                         {skills.map((skill, index) => (
                             <div
                                 key={index}
-                                className="p-6 rounded-2xl bg-surface/50 border border-white/5 hover:border-primary/30 transition-colors group"
+                                className="p-6 rounded-2xl bg-surface/40 border border-white/3 hover:border-primary/20 transition-colors group"
                             >
                                 <div className="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                                     {skill.icon}

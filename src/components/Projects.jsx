@@ -34,7 +34,7 @@ const Projects = () => {
                 <div className="text-center md:text-left mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="max-w-2xl">
                         <h2 className="text-sm font-semibold text-primary uppercase tracking-widest mb-2">Portfólio</h2>
-                        <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">Trabalhos em <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Destaque</span></h3>
+                        <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">Trabalhos em <span className="text-primary">Destaque</span></h3>
                         <p className="text-textMuted text-lg leading-relaxed">
                             Uma seleção de projetos recentes que demonstram minha capacidade de resolver problemas através de código limpo e arquiteturas bem projetadas.
                         </p>
@@ -47,7 +47,7 @@ const Projects = () => {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
-                        <div key={index} className="group rounded-2xl bg-surface/40 border border-white/5 overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/20 flex flex-col h-full">
+                        <div key={index} className="group rounded-2xl bg-surface/40 border border-white/3 overflow-hidden hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/20 flex flex-col h-full">
 
                             {/* Project Image */}
                             <div className="relative h-56 overflow-hidden">

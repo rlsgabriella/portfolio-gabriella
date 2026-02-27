@@ -36,7 +36,7 @@ ${formData.message}`;
     return (
         <section id="contact" className="py-24 relative overflow-hidden bg-background">
             {/* Decorative Blur */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] bg-primary/3 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
@@ -152,7 +152,7 @@ ${formData.message}`;
 
             {/* Footer minimal */}
             <div className="max-w-7xl mx-auto px-6 md:px-12 mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-textMuted text-sm">
-                <p>© 2024 rls.dev / Gabriella Rodrigues. Todos os direitos reservados.</p>
+                <p>© 2026 rls.dev / Gabriella Rodrigues. Todos os direitos reservados.</p>
                 <p className="mt-2 md:mt-0">Desenvolvido com <span className="text-red-500">♥</span> em React & Tailwind.</p>
             </div>
         </section>
