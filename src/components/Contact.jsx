@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail, MessageSquare, Send, Github, Linkedin, Instagram } from 'lucide-react';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [id]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const phoneNumber = "5585981637405";
+        const text = `Olá Gabriella!
+Meu nome é: ${formData.name}
+Meu e-mail é: ${formData.email}
+
+Mensagem:
+${formData.message}`;
+
+        const encodedText = encodeURIComponent(text);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+        window.open(whatsappUrl, '_blank');
+    };
+
     return (
         <section id="contact" className="py-24 relative overflow-hidden bg-background">
             {/* Decorative Blur */}
@@ -65,12 +96,15 @@ const Contact = () => {
                         {/* Form decorative element */}
                         <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-full blur-xl"></div>
 
-                        <form className="flex flex-col gap-5 relative z-10" onSubmit={(e) => e.preventDefault()}>
+                        <form className="flex flex-col gap-5 relative z-10" onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-textMuted mb-2">Nome</label>
                                 <input
                                     type="text"
                                     id="name"
+                                    required
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     placeholder="Seu nome"
                                     className="w-full px-4 py-3 rounded-xl bg-background/50 border border-white/10 text-white placeholder:text-textMuted focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
                                 />
@@ -81,6 +115,9 @@ const Contact = () => {
                                 <input
                                     type="email"
                                     id="email"
+                                    required
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     placeholder="seu@email.com"
                                     className="w-full px-4 py-3 rounded-xl bg-background/50 border border-white/10 text-white placeholder:text-textMuted focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
                                 />
@@ -91,6 +128,9 @@ const Contact = () => {
                                 <textarea
                                     id="message"
                                     rows="4"
+                                    required
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     placeholder="Como posso te ajudar?"
                                     className="w-full px-4 py-3 rounded-xl bg-background/50 border border-white/10 text-white placeholder:text-textMuted focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all resize-none"
                                 ></textarea>
