@@ -47,7 +47,7 @@ const Projects = () => {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
-                        <div key={index} className="group rounded-2xl bg-surface/40 border border-white/5 overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/20">
+                        <div key={index} className="group rounded-2xl bg-surface/40 border border-white/5 overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/20 flex flex-col h-full">
 
                             {/* Project Image */}
                             <div className="relative h-56 overflow-hidden">
@@ -60,7 +60,7 @@ const Projects = () => {
                             </div>
 
                             {/* Project Content */}
-                            <div className="p-8">
+                            <div className="p-8 flex flex-col flex-1">
                                 <h4 className="text-2xl font-bold text-white mb-3">{project.title}</h4>
                                 <p className="text-textMuted mb-6 text-sm leading-relaxed min-h-[60px]">
                                     {project.description}
@@ -76,7 +76,7 @@ const Projects = () => {
                                 </div>
 
                                 {/* Actions */}
-                                <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                                <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto">
                                     <a href={project.links.live} className="flex items-center gap-2 text-sm font-medium text-white hover:text-primary transition-colors">
                                         <ExternalLink size={16} /> Live Demo
                                     </a>
