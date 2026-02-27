@@ -1,5 +1,6 @@
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import geminiProjectImg from '../assets/gemini_project.jpg';
 
 const projects = [
     {
@@ -19,7 +20,7 @@ const projects = [
     {
         title: 'Leitor Inteligente com Gemini',
         description: 'Aplicação dockerizada que utiliza a poderosa API do Google Gemini para ler e analisar imagens de faturas e medidores de água.',
-        image: '/assets/gemini_project.jpg',
+        image: geminiProjectImg,
         tags: ['Gemini API', 'Docker', 'Visão Computacional'],
         links: { live: 'https://github.com/rlsgabriella/shopper-teste', github: 'https://github.com/rlsgabriella/shopper-teste' }
     }
