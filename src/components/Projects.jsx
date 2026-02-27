@@ -1,21 +1,21 @@
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import geminiProjectImg from '../assets/gemini_project.jpg';
-import automationFinanceImg from '../assets/automation_finance.png';
-import emailClassifierImg from '../assets/email_classifier.png';
+import financeProjectImg from '../assets/finance_project.png';
+import emailProjectImg from '../assets/email_project.png';
 
 const projects = [
     {
         title: 'Automação IA Financeiro',
         description: 'Um sistema que organiza e analisa fluxos de dinheiro automaticamente. Usei n8n e Inteligência Artificial para gerar relatórios e facilitar a gestão financeira.',
-        image: automationFinanceImg,
+        image: financeProjectImg,
         tags: ['n8n', 'Automação', 'Node.js', 'IA'],
         links: { live: 'https://github.com/rlsgabriella/agente-IA-financeiro', github: 'https://github.com/rlsgabriella/agente-IA-financeiro' }
     },
     {
         title: 'Classificador de Emails',
         description: 'Aplicação que lê e organiza seus e-mails por categoria de forma automática. Desenvolvido com Python no backend e uma interface simples em React.',
-        image: emailClassifierImg,
+        image: emailProjectImg,
         tags: ['Python', 'React', 'Machine Learning', 'API'],
         links: { live: 'https://github.com/rlsgabriella/front-server_py', github: 'https://github.com/rlsgabriella/front-server_py' }
     },
