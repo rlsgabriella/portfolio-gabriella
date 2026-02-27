@@ -4,23 +4,23 @@ import { Server, Database, Activity, RefreshCw } from 'lucide-react';
 const skills = [
     {
         icon: <Activity size={24} />,
-        title: 'Desenvolvimento Full Stack & Mobile First',
-        description: 'Construção de aplicações web robustas com React e Node.js, priorizando a experiência em dispositivos móveis. Foco em código limpo, componentização e integração fluida entre cliente e servidor.',
+        title: 'Desenvolvimento Full Stack',
+        description: 'Crio aplicações completas, do visual ao servidor, usando React e Node.js. Meu foco é entregar sistemas que funcionam bem no celular e carregam rápido.',
     },
     {
         icon: <Database size={24} />,
-        title: 'Backend & Segurança de Dados',
-        description: 'Modelagem de bancos de dados relacionais (PostgreSQL/MySQL) com foco em integridade e performance. Implementação de autenticação segura e proteção contra vulnerabilidades (OWASP), garantindo conformidade com a LGPD.',
+        title: 'Backend e Segurança',
+        description: 'Cuido da organização dos dados e da segurança do sistema. Garanto que as informações estejam protegidas e que o banco de dados suporte o crescimento do projeto.',
     },
     {
         icon: <RefreshCw size={24} />,
-        title: 'Arquitetura & Automação',
-        description: 'Estruturação de sistemas escaláveis utilizando APIs REST e orquestração de fluxos inteligentes com n8n. Especialista em transformar processos manuais (como sorteios e check-ins) em fluxos digitais automáticos.',
+        title: 'Automação de Processos',
+        description: 'Uso ferramentas como n8n para transformar tarefas manuais em fluxos automáticos. Ideal para sistemas de sorteio, check-in e integração entre diferentes plataformas.',
     },
     {
         icon: <Server size={24} />,
-        title: 'Escalabilidade & Evolução',
-        description: 'Otimização de consultas e estratégias de cache para suportar alto tráfego. Desenvolvimento de arquiteturas preparadas para integração de pagamentos e futura migração para aplicativos nativos.',
+        title: 'Performance e Evolução',
+        description: 'Deixo o sistema rápido e preparado para o futuro. Estruturo o código para facilitar a chegada de novas funções, como pagamentos e aplicativos nativos.',
     }
 ];
 

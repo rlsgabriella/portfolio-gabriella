@@ -5,21 +5,21 @@ import geminiProjectImg from '../assets/gemini_project.jpg';
 const projects = [
     {
         title: 'Automação IA Financeiro',
-        description: 'Agente inteligente automatizado construído com n8n para gestão e análise de fluxo financeiro, integrado com IA.',
+        description: 'Um sistema que organiza e analisa fluxos de dinheiro automaticamente. Usei n8n e Inteligência Artificial para gerar relatórios e facilitar a gestão financeira.',
         image: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=800&q=80',
         tags: ['n8n', 'Automação', 'Node.js', 'IA'],
         links: { live: 'https://github.com/rlsgabriella/agente-IA-financeiro', github: 'https://github.com/rlsgabriella/agente-IA-financeiro' }
     },
     {
         title: 'Classificador de Emails',
-        description: 'Sistema Fullstack com backend em Python para classificar e organizar emails automaticamente utilizando inteligência artificial.',
+        description: 'Aplicação que lê e organiza seus e-mails por categoria de forma automática. Desenvolvido com Python no backend e uma interface simples em React.',
         image: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=800&q=80',
         tags: ['Python', 'React', 'Machine Learning', 'API'],
         links: { live: 'https://github.com/rlsgabriella/front-server_py', github: 'https://github.com/rlsgabriella/front-server_py' }
     },
     {
         title: 'Leitor Inteligente com Gemini',
-        description: 'Aplicação dockerizada que utiliza a poderosa API do Google Gemini para ler e analisar imagens de faturas e medidores de água.',
+        description: 'Ferramenta que usa a IA do Google para "ler" fotos de hidrômetros e faturas. Ele extrai os números das imagens e transforma em dados prontos para uso.',
         image: geminiProjectImg,
         tags: ['Gemini API', 'Docker', 'Visão Computacional'],
         links: { live: 'https://github.com/rlsgabriella/shopper-teste', github: 'https://github.com/rlsgabriella/shopper-teste' }
