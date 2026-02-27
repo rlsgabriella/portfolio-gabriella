@@ -1,6 +1,6 @@
 # Portfólio - Gabriella Rodrigues
 
-![Portfolio Preview](./public/assets/gemini_project.jpg)
+![Portfolio Preview](./public/assets/portfolio_preview.png)
 
 Bem-vindo(a) ao repositório do meu portfólio pessoal! Este projeto foi desenvolvido para apresentar minhas habilidades como **Desenvolvedora Full Stack e Especialista em Automação**, destacando minha experiência no ecossistema Node.js, automações com n8n e integrações com Inteligência Artificial Generativa.
 
