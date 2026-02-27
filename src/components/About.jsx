@@ -5,22 +5,22 @@ const skills = [
     {
         icon: <Activity size={24} />,
         title: 'Desenvolvimento Full Stack',
-        description: 'Crio aplicações completas, do visual ao servidor, usando React e Node.js. Meu foco é entregar sistemas que funcionam bem no celular e carregam rápido.',
+        description: 'Construção de aplicações completas utilizando o ecossistema React para interfaces de alta fidelidade e Node.js para backends escaláveis. Foco em performance, código limpo e soluções que priorizam a experiência mobile.',
     },
     {
         icon: <Database size={24} />,
-        title: 'Backend e Segurança',
-        description: 'Cuido da organização dos dados e da segurança do sistema. Garanto que as informações estejam protegidas e que o banco de dados suporte o crescimento do projeto.',
+        title: 'Backend & Segurança de Dados',
+        description: 'Desenvolvimento de arquiteturas de dados seguras e eficientes com foco em integridade e performance. Implementação de boas práticas de autenticação e proteção de dados, garantindo conformidade com padrões modernos de segurança.',
     },
     {
         icon: <RefreshCw size={24} />,
-        title: 'Automação de Processos',
-        description: 'Uso ferramentas como n8n para transformar tarefas manuais em fluxos automáticos. Ideal para sistemas de sorteio, check-in e integração entre diferentes plataformas.',
+        title: 'Arquitetura & Automação',
+        description: 'Estruturação de sistemas modulares e integração de fluxos inteligentes através de ferramentas como n8n. Especialista em otimizar processos operacionais e conectar APIs para criar ecossistemas digitais fluidos.',
     },
     {
         icon: <Server size={24} />,
-        title: 'Performance e Evolução',
-        description: 'Deixo o sistema rápido e preparado para o futuro. Estruturo o código para facilitar a chegada de novas funções, como pagamentos e aplicativos nativos.',
+        title: 'Performance & Escalabilidade',
+        description: 'Otimização técnica para garantir carregamento instantâneo e alta disponibilidade sob demanda. Desenvolvimento de códigos preparados para evolução contínua, integrações de pagamento e futura expansão para plataformas nativas.',
     }
 ];
 
