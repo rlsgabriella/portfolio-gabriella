@@ -25,6 +25,8 @@ O projeto é modularizado de forma limpa:
 *   **Projetos**: Galeria interativa dos meus principais trabalhos, como o Agente de IA Financeiro e aplicações dockerizadas.
 *   **Contato**: Formulário e links diretos para minhas redes profissionais (LinkedIn, GitHub, Instagram, WhatsApp).
 
+Link para visualização completa: https://portfolio-gabriella.vercel.app/
+
 ## 💻 Como Rodar Localmente
 
 Siga os passos abaixo para executar o projeto em sua própria máquina:
