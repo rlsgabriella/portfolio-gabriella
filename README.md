@@ -6,14 +6,14 @@ Bem-vindo(a) ao repositório do meu portfólio pessoal! Este projeto foi desenvo
 
 ## 🚀 Visão Geral
 
-O portfólio foi construído com foco em **performance, acessibilidade e design premium**. A interface apresenta um tema escuro profissional com efeitos de _glassmorphism_ e animações fluidas, garantindo uma ótima experiência de usuário em qualquer dispositivo (Mobile First).
+O portfólio foi construído com foco em **performance e acessibilidade**. A interface apresenta um tema escuro profissional com efeitos de _glassmorphism_ e animações fluidas, garantindo uma ótima experiência de usuário em qualquer dispositivo (Mobile First).
 
 ### 🛠️ Tecnologias Utilizadas
 
 *   **React** (com Vite)
-*   **Tailwind CSS** (Para estilização utilitária e design responsivo)
-*   **Lucide React** (Para ícones modernos e leves)
-*   **JavaScript (ES6+)**
+*   **Tailwind CSS** 
+*   **Lucide React**
+*   **JavaScript**
 
 ## 📂 Estrutura do Projeto
 
