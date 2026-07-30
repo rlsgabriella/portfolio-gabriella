@@ -1,122 +1,167 @@
 import React from 'react';
-import { ExternalLink, Github, ChevronRight } from 'lucide-react';
+import { Github, ArrowUpRight, FileSearch, UtensilsCrossed, Bot, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import geminiProjectImg from '../assets/gemini_project.jpg';
-import financeProjectImg from '../assets/fluxo-ia.png';
-import siteNatImg from '../assets/site-nat.png';
 
 const projects = [
     {
-        title: 'Automação IA Financeiro',
-        description: 'Um sistema inteligente que organiza fluxos de caixa automaticamente. Integra n8n e IA para extrair insights financeiros em tempo real.',
-        image: financeProjectImg,
-        tags: ['n8n', 'Node.js', 'IA Generativa', 'API'],
-        links: { live: 'https://github.com/rlsgabriella/agente-IA-financeiro', github: 'https://github.com/rlsgabriella/agente-IA-financeiro' }
+        title: 'Revisor de Currículos com IA',
+        description:
+            'SaaS que analisa currículos via Gemini e retorna feedback estruturado. Pagamentos via Stripe (Pix e cartão).',
+        icon: FileSearch,
+        iconColor: 'text-node',
+        iconBg: 'bg-node/8',
+        tags: ['React / Vite', 'Node / Express', 'PostgreSQL', 'Prisma', 'Gemini', 'Stripe'],
+        github: 'https://github.com/rlsgabriella/mvp-revisor',
+        live: null,
     },
     {
-        title: 'Plataforma Audiovisual',
-        description: 'Landing page moderna focada em conversão, desenvolvida com React e Tailwind para apresentar serviços com alta performance e design sofisticado.',
-        image: siteNatImg,
-        tags: ['React', 'Tailwind', 'Frontend', 'UI/UX'],
-        links: { live: 'https://natalierjunior.com.br/', github: 'https://github.com/rlsgabriella/landingpage-nat' }
+        title: 'CRM para Restaurantes',
+        description:
+            'Plataforma com automação de reservas via WhatsApp e agente de IA integrado. Arquitetura monorepo com Next.js 15.',
+        icon: UtensilsCrossed,
+        iconColor: 'text-pulse',
+        iconBg: 'bg-pulse/8',
+        tags: ['Next.js 15', 'Supabase', 'n8n', 'IA Agent', 'WhatsApp'],
+        github: 'https://github.com/rlsgabriella',
+        live: null,
     },
     {
-        title: 'Leitor OCR Inteligente',
-        description: 'Ferramenta avançada de visão computacional via Gemini API. Extrai e estrutura dados a partir de imagens de faturas e hidrômetros com precisão.',
-        image: geminiProjectImg,
-        tags: ['Gemini API', 'Docker', 'Visão Computacional'],
-        links: { live: 'https://github.com/rlsgabriella/shopper-teste', github: 'https://github.com/rlsgabriella/shopper-teste' }
-    }
+        title: 'Chatbot de Atendimento',
+        description:
+            'Template reutilizável de chatbot WhatsApp com IA generativa. Estruturado para ser replicado entre clientes distintos.',
+        icon: Bot,
+        iconColor: 'text-trace',
+        iconBg: 'bg-trace/8',
+        tags: ['n8n', 'WAHA', 'Redis', 'Gemini', 'Docker'],
+        github: 'https://github.com/rlsgabriella/gabi-zap',
+        live: null,
+    },
+    {
+        title: 'Vibe Federal',
+        description:
+            'Plataforma educacional de preparação para concursos federais com ferramenta de Mapa de Estudos integrada.',
+        icon: GraduationCap,
+        iconColor: 'text-type',
+        iconBg: 'bg-white/5',
+        tags: ['React', 'Vite', 'TypeScript', 'Front-end'],
+        github: 'https://github.com/rlsgabriella/vibefederal',
+        live: null,
+    },
 ];
 
-const Projects = () => {
-    return (
-        <section id="projects" className="py-32 relative bg-background">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+const Projects = () => (
+    <section id="projects" className="py-24 md:py-32 border-t border-white/5 bg-panel/20">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20"
+            {/* Header */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
+            >
+                <div>
+                    <p className="font-mono text-[10px] text-muted tracking-widest uppercase mb-4">
+                        Projetos
+                    </p>
+                    <h2 className="font-display font-bold text-4xl md:text-5xl text-type leading-tight">
+                        O que já foi construído.
+                    </h2>
+                </div>
+                <a
+                    href="https://github.com/rlsgabriella"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 font-mono text-[10px] text-muted tracking-widest uppercase hover:text-type transition-colors focus:outline-none focus:ring-2 focus:ring-node focus:ring-offset-2 focus:ring-offset-canvas rounded whitespace-nowrap"
                 >
-                    <div className="max-w-2xl">
-                        <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Portfólio</h2>
-                        <h3 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-                            Showcase de <span className="text-gradient">Projetos.</span>
-                        </h3>
-                        <p className="text-textMuted text-lg leading-relaxed font-light">
-                            Soluções escaláveis que resolvem problemas reais. Da concepção arquitetural à implementação da interface de usuário.
-                        </p>
-                    </div>
+                    Ver GitHub
+                    <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
+                </a>
+            </motion.div>
 
-                    <a href="https://github.com/rlsgabriella" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-white hover:text-primary transition-colors font-medium group bg-surface/50 px-6 py-3 rounded-full border border-white/5 hover:border-primary/30">
-                        Repositórios
-                        <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </a>
-                </motion.div>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
+            {/* Cards */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                {projects.map((project, i) => {
+                    const Icon = project.icon;
+                    return (
+                        <motion.article
+                            key={i}
+                            initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.15 }}
-                            className="group flex flex-col h-full glass-card rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500"
+                            transition={{ duration: 0.5, delay: i * 0.08 }}
+                            className="group flex flex-col bg-panel border border-white/5 rounded-xl overflow-hidden hover:border-white/12 transition-colors"
                         >
-                            {/* Project Image Frame */}
-                            <div className="p-4 pb-0">
-                                <div className="relative h-60 w-full rounded-2xl overflow-hidden bg-surface/50 border border-white/5">
-                                    <div className="absolute inset-0 bg-primary/20 mix-blend-overlay group-hover:opacity-0 transition-opacity z-10 duration-500"></div>
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 filter contrast-125 saturate-50 group-hover:saturate-100"
-                                    />
-                                </div>
+                            {/* Icon Block */}
+                            <div className={`flex items-center justify-center h-40 ${project.iconBg} relative overflow-hidden`}>
+                                {/* subtle grid pattern */}
+                                <div
+                                    className="absolute inset-0 opacity-[0.04]"
+                                    style={{
+                                        backgroundImage: 'linear-gradient(#D1C9C0 1px, transparent 1px), linear-gradient(90deg, #D1C9C0 1px, transparent 1px)',
+                                        backgroundSize: '24px 24px'
+                                    }}
+                                />
+                                <Icon
+                                    className={`w-12 h-12 ${project.iconColor} opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300`}
+                                    aria-hidden="true"
+                                    strokeWidth={1.25}
+                                />
                             </div>
 
-                            {/* Project Content */}
-                            <div className="p-8 flex flex-col flex-1 relative">
-                                {/* Decorator line */}
-                                <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-
-                                <h4 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">{project.title}</h4>
-                                <p className="text-textMuted mb-8 text-sm leading-relaxed flex-1 font-light">
+                            {/* Content */}
+                            <div className="flex flex-col flex-1 p-5 gap-3">
+                                <h3 className="font-display font-semibold text-sm text-type leading-snug group-hover:text-node transition-colors">
+                                    {project.title}
+                                </h3>
+                                <p className="text-muted text-xs leading-relaxed flex-1">
                                     {project.description}
                                 </p>
 
                                 {/* Tags */}
-                                <div className="flex flex-wrap gap-2 mb-8">
-                                    {project.tags.map((tag, i) => (
-                                        <span key={i} className="px-3 py-1.5 text-xs font-medium text-white/70 bg-white/5 rounded-lg border border-white/5 group-hover:border-primary/20 group-hover:text-white transition-colors">
+                                <div className="flex flex-wrap gap-1">
+                                    {project.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="font-mono text-[8px] tracking-wider uppercase px-1.5 py-0.5 bg-canvas border border-white/5 text-muted rounded"
+                                        >
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
 
-                                {/* Actions */}
-                                <div className="flex items-center gap-6 mt-auto">
-                                    <a href={project.links.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-semibold text-white hover:text-primary transition-colors">
-                                        <ExternalLink size={18} /> Live Demo
+                                {/* Links */}
+                                <div className="flex items-center gap-4 pt-3 border-t border-white/5">
+                                    <a
+                                        href={project.github}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase text-muted hover:text-type transition-colors focus:outline-none focus:ring-2 focus:ring-node focus:ring-offset-2 focus:ring-offset-panel rounded"
+                                    >
+                                        <Github className="w-3 h-3" aria-hidden="true" />
+                                        GitHub
                                     </a>
-                                    <a href={project.links.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-medium text-textMuted hover:text-white transition-colors">
-                                        <Github size={18} /> Código
-                                    </a>
+                                    {project.live && (
+                                        <a
+                                            href={project.live}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase text-node hover:text-type transition-colors focus:outline-none focus:ring-2 focus:ring-node focus:ring-offset-2 focus:ring-offset-panel rounded"
+                                        >
+                                            <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
+                                            Demo
+                                        </a>
+                                    )}
                                 </div>
                             </div>
-
-                        </motion.div>
-                    ))}
-                </div>
-
+                        </motion.article>
+                    );
+                })}
             </div>
-        </section>
-    );
-};
+
+        </div>
+    </section>
+);
 
 export default Projects;

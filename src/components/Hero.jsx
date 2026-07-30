@@ -1,132 +1,213 @@
 import React from 'react';
-import { Github, Linkedin, ArrowRight, Sparkles, Terminal } from 'lucide-react';
+import { Github, Linkedin, ArrowDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import pcGabiImg from '../assets/pc-gabi.jpeg';
-import euuImg from '../assets/euu.jfif';
 
-const bgImageUrl = pcGabiImg;
+/* ─── Directed Pipeline Graph ─────────────────────────────
+   Layout: L-shaped snake, left-to-right then down-and-right.
 
-const Hero = () => {
+   Row 1 (y=80):  React ──→ Node.js ──→ n8n
+                                           │
+                                           ↓ (y=80→170)
+   Row 2 (y=170):                  IA/LLM ──→ WhatsApp
+
+   SVG viewBox: 0 0 480 240
+   Nodes are circles r=5. Edges are straight lines with arrow markers.
+   Animation: sequential draw, one node+edge at a time.
+─────────────────────────────────────────────────────────── */
+
+const NODES = [
+    { id: 'react',     label: 'React',     x: 55,  y: 80  },
+    { id: 'node',      label: 'Node.js',   x: 185, y: 80  },
+    { id: 'n8n',       label: 'n8n',       x: 315, y: 80  },
+    { id: 'llm',       label: 'IA / LLM',  x: 315, y: 170 },
+    { id: 'whatsapp',  label: 'WhatsApp',  x: 435, y: 170 },
+];
+
+/* Straight-line edges between circle edges (not centers) */
+const EDGES = [
+    { id: 'e1', x1: 60,  y1: 80,  x2: 178, y2: 80  }, /* React → Node.js */
+    { id: 'e2', x1: 193, y1: 80,  x2: 308, y2: 80  }, /* Node.js → n8n   */
+    { id: 'e3', x1: 315, y1: 86,  x2: 315, y2: 163 }, /* n8n → IA/LLM    */
+    { id: 'e4', x1: 321, y1: 170, x2: 428, y2: 170 }, /* IA/LLM → WhatsApp */
+];
+
+/* Sequential animation: node[i] appears, then its outgoing edge draws */
+const SEQUENCE = [
+    /* React node */      { kind: 'node', id: 'react',     delay: 0    },
+    /* React→Node edge */ { kind: 'edge', id: 'e1',        delay: 0.25 },
+    /* Node.js node */    { kind: 'node', id: 'node',       delay: 0.65 },
+    /* Node→n8n edge */   { kind: 'edge', id: 'e2',        delay: 0.9  },
+    /* n8n node */        { kind: 'node', id: 'n8n',        delay: 1.3  },
+    /* n8n→IA edge */     { kind: 'edge', id: 'e3',        delay: 1.55 },
+    /* IA node */         { kind: 'node', id: 'llm',        delay: 1.9  },
+    /* IA→WA edge */      { kind: 'edge', id: 'e4',        delay: 2.15 },
+    /* WhatsApp node */   { kind: 'node', id: 'whatsapp',  delay: 2.5  },
+];
+
+const delayFor = (kind, id) => {
+    const entry = SEQUENCE.find(s => s.kind === kind && s.id === id);
+    return entry ? entry.delay : 0;
+};
+
+function PipelineGraph() {
     return (
-        <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
+        <svg
+            viewBox="0 0 490 240"
+            className="w-full h-full"
+            aria-hidden="true"
+            role="presentation"
+        >
+            <defs>
+                <marker
+                    id="arrowhead"
+                    markerWidth="7"
+                    markerHeight="7"
+                    refX="6"
+                    refY="3.5"
+                    orient="auto"
+                >
+                    <path d="M 0 0.5 L 6 3.5 L 0 6.5" fill="none" stroke="#4A8FD5" strokeWidth="1" opacity="0.7" />
+                </marker>
+            </defs>
 
-            {/* Background Image Overlay */}
-            <div className="absolute inset-0 z-0 flex justify-center items-center opacity-40">
-                <img 
-                    src={bgImageUrl} 
-                    alt="Workspace Background" 
-                    className="w-full h-full max-w-6xl object-contain grayscale mix-blend-luminosity p-6"
+            {/* Edges */}
+            {EDGES.map((e) => (
+                <line
+                    key={e.id}
+                    x1={e.x1} y1={e.y1}
+                    x2={e.x2} y2={e.y2}
+                    stroke="#4A8FD5"
+                    strokeWidth="1"
+                    markerEnd="url(#arrowhead)"
+                    pathLength="1"
+                    className="graph-edge"
+                    style={{ '--edge-delay': `${delayFor('edge', e.id)}s` }}
                 />
-                {/* Gradiente radial para mesclar as bordas da imagem com o fundo */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#0a0a0a_75%)]"></div>
-            </div>
+            ))}
 
-            {/* Premium Background Decorators */}
-            <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen animate-pulse duration-1000 z-0" />
-            <div className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-accent/15 rounded-full blur-[150px] pointer-events-none mix-blend-screen z-0" />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-10 grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
-
-                {/* Text Content */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="flex flex-col gap-8 order-2 lg:order-1"
+            {/* Nodes */}
+            {NODES.map((n) => (
+                <g
+                    key={n.id}
+                    className="graph-node"
+                    style={{ '--node-delay': `${delayFor('node', n.id)}s` }}
                 >
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/10 w-fit shadow-[0_0_20px_rgba(59,130,246,0.1)]"
+                    <circle cx={n.x} cy={n.y} r="13" fill="none" stroke="#4A8FD5" strokeWidth="0.5" opacity="0.2" />
+                    <circle cx={n.x} cy={n.y} r="5" fill="#4A8FD5" />
+                    <text
+                        x={n.x}
+                        y={n.y + 25}
+                        textAnchor="middle"
+                        fill="#7A7469"
+                        fontSize="8.5"
+                        fontFamily="DM Mono, monospace"
+                        letterSpacing="0.06em"
                     >
-                        <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                        {n.label}
+                    </text>
+                </g>
+            ))}
+        </svg>
+    );
+}
+
+/* ─── Hero Section ──────────────────────────────────────── */
+const Hero = () => (
+    <section
+        id="home"
+        className="relative min-h-screen flex items-center pt-16 overflow-hidden"
+    >
+        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
+            <div className="grid lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_520px] gap-8 lg:gap-16 items-center min-h-[calc(100vh-4rem)]">
+
+                {/* ── Left: Text Content ── */}
+                <motion.div
+                    initial={{ opacity: 0, y: 28 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col gap-8 py-16"
+                >
+                    {/* Status */}
+                    <span className="inline-flex items-center gap-2 font-mono text-[10px] text-trace tracking-widest uppercase w-fit">
+                        <span className="w-1.5 h-1.5 rounded-full bg-trace inline-block" aria-hidden="true" />
+                        Disponível para projetos
+                    </span>
+
+                    {/* Name — Variation B: weight contrast 800 / 400 / 800 */}
+                    <h1 className="font-display leading-[0.88] tracking-tight">
+                        <span className="block text-[clamp(3.2rem,7.5vw,5.5rem)] font-extrabold text-type">
+                            Gabriella
                         </span>
-                        <span className="text-xs font-semibold text-white/80 tracking-wide uppercase">Disponível para novos desafios</span>
-                    </motion.div>
+                        <span className="block text-[clamp(3.2rem,7.5vw,5.5rem)] font-normal text-type/55">
+                            Rodrigues
+                        </span>
+                        <span className="block text-[clamp(3.2rem,7.5vw,5.5rem)] font-extrabold text-muted/65">
+                            Lopes.
+                        </span>
+                    </h1>
 
-                    <div className="space-y-4">
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3, duration: 0.5 }}
-                            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-white leading-[1.05]"
+                    {/* Tagline */}
+                    <p className="text-muted text-base md:text-lg max-w-md leading-relaxed">
+                        Full stack developer. Construo pipelines que conectam{' '}
+                        <span className="text-type font-medium">
+                            IA, WhatsApp, APIs e bancos de dados
+                        </span>{' '}
+                        — de ponta a ponta.
+                    </p>
+
+                    {/* CTAs */}
+                    <div className="flex flex-wrap items-center gap-4">
+                        <a
+                            href="#projects"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-node text-white font-sans font-medium text-sm rounded hover:bg-node/90 focus:outline-none focus:ring-2 focus:ring-node focus:ring-offset-2 focus:ring-offset-canvas transition-colors"
                         >
-                            Code. <br />
-                            <span className="text-gradient flex items-center gap-4">
-                                Intelligence.
-                                <Sparkles className="w-8 h-8 sm:w-12 sm:h-12 text-accent/80" />
-                            </span>
-                            Experience.
-                        </motion.h1>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4, duration: 0.5 }}
-                            className="text-lg sm:text-xl text-textMuted max-w-lg leading-relaxed font-light"
-                        >
-                            <strong className="text-white font-medium">Desenvolvedora Full Stack</strong> criando aplicações modernas, automações inteligentes e experiências digitais impulsionadas por IA.
-                        </motion.p>
-                    </div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5, duration: 0.5 }}
-                        className="flex flex-wrap items-center gap-5 pt-4"
-                    >
-                        <a href="#projects" className="px-8 py-4 rounded-xl bg-primary text-white font-semibold hover:bg-primary/90 transition-all duration-300 flex items-center gap-3 group shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1">
-                            Explorar Trabalho
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            Ver projetos
+                            <ArrowDown className="w-4 h-4" aria-hidden="true" />
                         </a>
-                    </motion.div>
-                </motion.div>
-
-                {/* Graphic / Image Area */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="order-1 lg:order-2 flex justify-center lg:justify-end relative"
-                >
-                    <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
-                        {/* Premium Tech Element background */}
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary/20 to-accent/20 blur-2xl transform rotate-6 animate-pulse"></div>
-
-                        {/* Main Image Card */}
-                        <div className="absolute inset-0 rounded-3xl glass-card overflow-hidden flex items-center justify-center z-20 border border-white/10 shadow-2xl transform -rotate-3 hover:rotate-0 transition-all duration-500 group">
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60 z-10"></div>
-                            <img
-                                src={euuImg}
-                                alt="Gabriella Rodrigues"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[0.3] group-hover:grayscale-0"
-                            />
-
-                            {/* Floating Badge */}
-                            <motion.div
-                                initial={{ y: 20, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 1, duration: 0.6 }}
-                                className="absolute bottom-6 left-6 z-30 glass-card px-4 py-2 rounded-xl flex items-center gap-3 backdrop-blur-md border-white/20"
+                        <div className="flex gap-2">
+                            <a
+                                href="https://github.com/rlsgabriella"
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label="GitHub"
+                                className="p-2.5 border border-white/10 rounded text-muted hover:text-type hover:border-white/25 focus:outline-none focus:ring-2 focus:ring-node focus:ring-offset-2 focus:ring-offset-canvas transition-colors"
                             >
-                                <div className="p-2 bg-primary/20 rounded-lg text-primary">
-                                    <Terminal size={18} />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-textMuted font-medium uppercase tracking-wider">Desenvolvedora</p>
-                                    <p className="text-sm text-white font-bold">Gabriella Rodrigues</p>
-                                </div>
-                            </motion.div>
+                                <Github className="w-5 h-5" aria-hidden="true" />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/gabriella-rodrigues"
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label="LinkedIn"
+                                className="p-2.5 border border-white/10 rounded text-muted hover:text-type hover:border-white/25 focus:outline-none focus:ring-2 focus:ring-node focus:ring-offset-2 focus:ring-offset-canvas transition-colors"
+                            >
+                                <Linkedin className="w-5 h-5" aria-hidden="true" />
+                            </a>
                         </div>
                     </div>
                 </motion.div>
 
+                {/* ── Right: Pipeline Graph (signature element) ── */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="hidden lg:flex flex-col items-center justify-center gap-4"
+                    aria-hidden="true"
+                >
+                    <div className="w-full aspect-[490/240] relative">
+                        <div className="absolute inset-0 bg-node/4 blur-3xl rounded-full pointer-events-none" />
+                        <PipelineGraph />
+                    </div>
+                    {/* Direction label */}
+                    <span className="font-mono text-[9px] text-muted/50 tracking-widest uppercase">
+                        entrada → processamento → entrega
+                    </span>
+                </motion.div>
+
             </div>
-        </section>
-    );
-};
+        </div>
+    </section>
+);
 
 export default Hero;

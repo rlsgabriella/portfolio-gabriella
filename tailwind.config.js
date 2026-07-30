@@ -4,19 +4,21 @@ export default {
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
-    darkMode: 'class', // Allow manual or system dark mode toggling; we'll default to dark
     theme: {
         extend: {
             colors: {
-                background: '#0a0a0a',
-                surface: '#171717',
-                primary: '#3b82f6', // Premium bright blue
-                accent: '#8b5cf6', // Violet accent
-                textMain: '#f3f4f6', // Gray-100
-                textMuted: '#9ca3af', // Gray-400
+                canvas: '#0C0F16',
+                panel:  '#151A27',
+                type:   '#D1C9C0',
+                muted:  '#7A7469',
+                node:   '#4A8FD5',
+                pulse:  '#E07A44',
+                trace:  '#6E9E8C',
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
+                display: ['Syne', 'sans-serif'],
+                sans:    ['DM Sans', 'sans-serif'],
+                mono:    ['DM Mono', 'monospace'],
             },
         },
     },
