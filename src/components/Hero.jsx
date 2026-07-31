@@ -175,7 +175,7 @@ const Hero = () => (
                                 <Github className="w-5 h-5" aria-hidden="true" />
                             </a>
                             <a
-                                href="https://www.linkedin.com/in/gabriella-rodrigues"
+                                href="https://www.linkedin.com/in/gabriella-rodrigues-5b5416199/"
                                 target="_blank"
                                 rel="noreferrer"
                                 aria-label="LinkedIn"

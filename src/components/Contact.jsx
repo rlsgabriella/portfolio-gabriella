@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const socials = [
     { icon: Github,      href: 'https://github.com/rlsgabriella',                  label: 'GitHub'    },
-    { icon: Linkedin,    href: 'https://www.linkedin.com/in/gabriella-rodrigues',   label: 'LinkedIn'  },
+    { icon: Linkedin,    href: 'https://www.linkedin.com/in/gabriella-rodrigues-5b5416199/',   label: 'LinkedIn'  },
     { icon: Instagram,   href: 'https://www.instagram.com/rls.dev',                 label: 'Instagram' },
 ];
 
