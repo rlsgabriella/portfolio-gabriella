@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, ArrowDown } from 'lucide-react';
 import { motion } from 'framer-motion';
+import pcGabi from '../assets/pc-gabi.jpeg';
 
 /* ─── Directed Pipeline Graph ─────────────────────────────
    Layout: L-shaped snake, left-to-right then down-and-right.
@@ -117,7 +118,25 @@ const Hero = () => (
         id="home"
         className="relative min-h-screen flex items-center pt-16 overflow-hidden"
     >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
+        {/* ── Background: photo ── */}
+        <img
+            src={pcGabi}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+            style={{ filter: 'grayscale(55%) brightness(1.15)', opacity: 0.30 }}
+        />
+        {/* ── Background: gradient overlay
+              Desktop: solid left (text) → opens center → near-solid right (protects diagram)
+              Mobile:  same gradient reads as a subtle dark veil — diagram is hidden anyway ── */}
+        <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+                background: 'linear-gradient(to right, #0C0F16 0%, #0C0F16 28%, rgba(12,15,22,0.60) 52%, rgba(12,15,22,0.88) 76%, rgba(12,15,22,0.97) 100%)',
+            }}
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
             <div className="grid lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_520px] gap-8 lg:gap-16 items-center min-h-[calc(100vh-4rem)]">
 
                 {/* ── Left: Text Content ── */}
